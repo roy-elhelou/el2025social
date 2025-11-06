@@ -223,8 +223,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/System_Images_2.jpg" alt="Can robots use behavioural cues to project emotional and social presence, even without anthropomorphic features?" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+      <img src="static/images/System_Images_2.jpg" alt="Photos showing varying robot poses as a result of varying the arousal level of the proposed architecture controlling the emotional and social behaviours of a Universal Robots UR5e manipulator." style="width: 100%; height: auto; display: block; margin: 0 auto;">
       <h2 class="subtitle has-text-centered" style="margin-top: 2rem;">
+        Can robots use behavioural cues to project emotional and social presence, even without anthropomorphic features?
+      </h2>
     </div>
   </div>
 </section>
@@ -248,122 +250,145 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+<!-- System Design -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">System Design</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our behaviour generation system integrates attention and arousal mechanisms to support expressive and socially responsive interaction in robotic manipulators. The system consists of two main components:
+          </p>
           
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <!-- Figure 2: System architecture diagram -->
+          <div class="has-text-centered" style="margin: 2rem 0;">
+            <img src="static/images/System_Architecture.jpg" alt="System architecture diagram for our proposed interactive and expressive robot behaviour system" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+            <p class="is-size-6" style="margin-top: 0.5rem; font-style: italic;">
+              System architecture diagram for our proposed interactive and expressive robot behaviour system.
+            </p>
           </div>
+          
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Attention Engine</h3>
+          <p>
+            The attention engine directs the robot's attention to salient features in its visual environment—specifically, users and individuals within range of an RGB-D sensor (Intel RealSense D435 Depth Camera). It computes an attention score for each detected individual, determining saliency and guiding the robot's gaze to enable dynamic, responsive interactions.
+          </p>
+          <p>
+            Each attention score is a weighted combination of positional cues, movement dynamics, and a habituation factor that prevents prolonged fixation on a single target. The score Φ is defined as:
+          </p>
+          <p style="text-align: center; font-family: monospace; margin: 1rem 0;">
+            Φ = w<sub>p</sub>P + w<sub>v</sub>V + Θ(t)
+          </p>
+          <p>
+            where P combines proximity and hand position factors, V captures torso and hand motion, and Θ(t) is a habituation factor that dynamically adjusts based on gaze history to maintain naturalistic attention shifts.
+          </p>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Robotic Gaze Algorithm</h3>
+          <p>
+            The gaze algorithm maps 3D target positions to joint-space postures, enabling the robot to orient toward salient individuals. Arousal modulates posture and motion dynamics: low arousal produces subdued, minimal motion, while high arousal increases speed, amplitude, and reach. A sinusoidal oscillation is applied to joint angles to simulate breathing, with oscillation intensity scaling with arousal to enhance realism and lifelikeness.
+          </p>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Attentional Drift Module</h3>
+          <p>
+            To avoid mechanical stiffness from continuous fixation, we introduce an Attentional Drift Module that injects naturalistic variability into the robot's gaze behaviour. The module generates transient virtual targets within the robot's workspace probabilistically, with likelihood increasing alongside arousal level, creating momentary attentional shifts without disrupting motion continuity.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
+<!-- End System Design -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+
+
+<!-- Key Findings -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Findings</h2>
+        <div class="content has-text-justified">
+          <p>
+            We conducted a user study with 36 participants (18 males, 18 females, ages 18-25) examining how variations in arousal and attention influence human perceptions of a non-anthropomorphic robot. The study employed a 2 × 2 factorial design, crossing two levels of arousal (low and high) with two levels of attention (low and high).
+          </p>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Effects of Attention</h3>
+          <p>
+            High attention significantly enhanced perceptions across multiple dimensions:
+          </p>
+          <ul>
+            <li><strong>Warmth:</strong> Higher in high attention (M = 3.77) vs. low attention (M = 3.01), p < .001</li>
+            <li><strong>Competence:</strong> Higher in high attention (M = 5.11) vs. low attention (M = 3.06), p < .001</li>
+            <li><strong>Animacy:</strong> Higher in high attention (M = 4.10) vs. low attention (M = 3.44), p < .001</li>
+            <li><strong>Intentionality:</strong> Higher in high attention (M = 4.95) vs. low attention (M = 3.53), p < .001</li>
+            <li><strong>Sociability:</strong> Significantly improved with high attention, F(1, 35) = 7.22, p < .01</li>
+          </ul>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Effects of Arousal</h3>
+          <p>
+            High arousal had mixed effects:
+          </p>
+          <ul>
+            <li><strong>Discomfort:</strong> Increased in high arousal (M = 3.87) vs. low arousal (M = 3.34), p < .01</li>
+            <li><strong>Disturbance:</strong> Increased in high arousal, F(1, 35) = 7.58, p < .01</li>
+            <li><strong>Sociability:</strong> Decreased in high arousal, F(1, 35) = 4.75, p < .05</li>
+          </ul>
+
+          <h3 class="title is-4" style="margin-top: 1.5rem;">Interaction Effects</h3>
+          <p>
+            The combination of high attention and low arousal yielded the most positive social outcomes:
+          </p>
+          
+          <!-- Figure 3: Interaction effects visualization -->
+          <div class="has-text-centered" style="margin: 2rem 0;">
+            <img src="static/images/discomfort_sociability_interaction.jpg" alt="Interaction effect of arousal and attention on discomfort and sociability ratings" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+            <p class="is-size-6" style="margin-top: 0.5rem; font-style: italic;">
+              Interaction effect of arousal and attention on discomfort and sociability ratings.
+            </p>
+          </div>
+          
+          <ul>
+            <li>In high attention conditions, discomfort was significantly higher in high arousal (M = 3.71) than low arousal (M = 2.79), p < .01</li>
+            <li>In high attention conditions, sociability was significantly lower in high arousal (M = 3.31) than low arousal (M = 4.17), p < .01</li>
+            <li>Low arousal conditions resulted in longer interaction durations (M = 71.96s) than high arousal conditions (M = 62.21s), F = 4.66, p < .05</li>
+          </ul>
+
+          <p style="margin-top: 1.5rem;">
+            <strong>Key Insight:</strong> The most socially successful behaviours emerged when attention was high and arousal remained low. Users prefer systems that are attentive without being overstimulating, reflecting broader human norms around affect regulation where calm focus is associated with trustworthiness and emotional control.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
+<!-- End Key Findings -->
 
 
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+<!-- Contributions -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Contributions</h2>
+        <div class="content has-text-justified">
+          <p>
+            This work presents a unified framework for endowing non-anthropomorphic robots with expressive, intuitive behaviours. Our contributions include:
+          </p>
+          <ul>
+            <li><strong>Expressive Control System:</strong> We design an integrated system that combines arousal-based motion modulation with a real-time attention engine in a robotic manipulator, with natural motion continuity in mind.</li>
+            <li><strong>Empirical Evaluation:</strong> We conduct a factorial user study that evaluates how attention and arousal jointly shape perceptions of discomfort and sociability in non-anthropomorphic robots.</li>
+            <li><strong>Design Insights:</strong> We provide empirical insights into the social dynamics of expressive motion in non-humanoid robots, supporting their use in socially embedded contexts.</li>
+          </ul>
+          <p style="margin-top: 1rem;">
+            These findings offer concrete guidance for the design of socially intuitive robotic systems, particularly in non-humanoid forms, demonstrating that even robots without human-like features can convey character-like behaviour when designed with appropriate expressive strategies.
+          </p>
+        </div>
       </div>
     </div>
-  </section>
-<!--End paper poster -->
+  </div>
+</section>
+<!-- End Contributions -->
 
 
 
