@@ -749,21 +749,28 @@ a:focus {
   }
 }
 
-/* === FIX: prevent bulma-carousel pagination (wheel) from covering captions === */
+/* === HARD FIX: force one carousel item per view === */
 .user-study-carousel .carousel-container {
-  padding-bottom: 4rem !important;  /* reserves space below slides */
+  display: flex !important;
+  flex-wrap: nowrap !important;
 }
 
-/* keep the dots in that reserved area (instead of overlaying captions) */
-.user-study-carousel .carousel-pagination {
-  bottom: 1rem !important;
+.user-study-carousel .carousel-item,
+.user-study-carousel .item {
+  min-width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
 }
 
-/* optional: ensure slides don't get clipped by container overflow */
+/* === REMOVE horizontal scrollbar that blocks captions === */
 .user-study-carousel {
-  overflow: visible !important;
+  overflow-x: hidden !important;
 }
 
+.user-study-carousel .condition-caption {
+  margin-top: 0.75rem;
+  padding-bottom: 1rem;
+}
 
 
 
