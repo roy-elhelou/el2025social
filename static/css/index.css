@@ -290,8 +290,16 @@ body {
   font-weight: 500;
 }
 
-.user-study-carousel {
-  padding-bottom: 3rem;
+/* --- Put carousel navigation BELOW content (prevents overlap) --- */
+.user-study-carousel .carousel-navigation,
+.user-study-carousel .carousel-pagination {
+  position: static !important;
+  margin-top: 1rem;
+}
+
+/* If the plugin sets a 'bottom' value, cancel it */
+.user-study-carousel .carousel-pagination {
+  bottom: auto !important;
 }
 
 /* Pagination and Misc Improvements */
