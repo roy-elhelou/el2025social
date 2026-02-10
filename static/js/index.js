@@ -119,6 +119,38 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+function initializeUserStudyCarousel() {
+    if (typeof bulmaCarousel === 'undefined') return;
+
+    bulmaCarousel.attach('.user-study-carousel', {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        loop: false,
+        infinite: false,
+        autoplay: false,
+        navigationSwipe: false,
+        breakpoints: [
+            { changePoint: 480, slidesToShow: 1, slidesToScroll: 1 },
+            { changePoint: 640, slidesToShow: 1, slidesToScroll: 1 },
+            { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 }
+        ]
+    });
+}
+
+function setupSingleVideoPlayback() {
+    const videos = document.querySelectorAll('.user-study-carousel video');
+
+    videos.forEach(video => {
+        video.addEventListener('play', () => {
+            videos.forEach(otherVideo => {
+                if (otherVideo !== video) {
+                    otherVideo.pause();
+                }
+            });
+        });
+    });
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -132,11 +164,18 @@ $(document).ready(function() {
     }
 
 	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    var carousels = bulmaCarousel.attach('.carousel:not(.user-study-carousel)', options);
+
+    // Override user study carousel behavior so only one slide shows and wheel/trackpad
+    // movement does not trigger slide changes.
+    initializeUserStudyCarousel();
+
 	
     bulmaSlider.attach();
     
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
+
+    setupSingleVideoPlayback()
 
 })
