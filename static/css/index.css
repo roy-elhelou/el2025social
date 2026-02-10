@@ -290,16 +290,6 @@ body {
   font-weight: 500;
 }
 
-.user-study-carousel .condition-caption {
-  position: relative;
-  z-index: 10;
-  padding-bottom: 1.5rem; /* creates breathing room above the wheel */
-}
-
-.user-study-carousel .carousel-pagination {
-  bottom: -0.75rem !important;
-}
-
 /* Pagination and Misc Improvements */
 .slider-pagination .slider-page {
   background: var(--primary-color);
@@ -758,6 +748,22 @@ a:focus {
     box-shadow: none !important;
   }
 }
+
+/* === FIX: prevent bulma-carousel pagination (wheel) from covering captions === */
+.user-study-carousel .carousel-container {
+  padding-bottom: 4rem !important;  /* reserves space below slides */
+}
+
+/* keep the dots in that reserved area (instead of overlaying captions) */
+.user-study-carousel .carousel-pagination {
+  bottom: 1rem !important;
+}
+
+/* optional: ensure slides don't get clipped by container overflow */
+.user-study-carousel {
+  overflow: visible !important;
+}
+
 
 
 
