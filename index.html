@@ -492,7 +492,19 @@
 
   </main>
 
-  
+  <!-- ✅ FIX: Initialize carousel AFTER everything is loaded -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof bulmaCarousel !== 'undefined') {
+        bulmaCarousel.attach('.user-study-carousel', {
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          loop: false,
+          autoplay: false
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
